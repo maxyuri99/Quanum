@@ -22,7 +22,7 @@ RUN npm install --legacy-peer-deps
 COPY . .
 
 # Compile a aplicação (se for necessário para o Vue.js)
-RUN npm run build
+RUN npm run start
 
 # Exponha a porta da aplicação
 EXPOSE 8080
