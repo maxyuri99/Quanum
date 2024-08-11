@@ -11,7 +11,7 @@ ENV NODE_OPTIONS=--openssl-legacy-provider
 COPY package*.json ./
 
 # Instale as dependências do projeto
-RUN npm install 
+RUN npm install --force
 
 # Copie o restante do código da aplicação
 COPY . .
