@@ -1,5 +1,5 @@
-# Use uma imagem base com Node.js
-FROM node:18-alpine
+# Use uma imagem base com Node.js 16.x
+FROM node:16-alpine
 
 # Defina o diretório de trabalho dentro do contêiner
 WORKDIR /app
@@ -16,7 +16,7 @@ ENV NODE_OPTIONS=--openssl-legacy-provider
 # Copie os arquivos de dependências
 COPY package*.json ./
 
-# Instale as dependências do projeto
+# Instale as dependências do projeto com legacy-peer-deps para evitar conflitos
 RUN npm install --legacy-peer-deps
 
 # Copie o restante do código da aplicação
