@@ -4,6 +4,12 @@ FROM node:18-alpine
 # Defina o diretório de trabalho dentro do contêiner
 WORKDIR /app
 
+# Instale a versão específica do npm (8.19.4)
+RUN npm install -g npm@8.19.4
+
+# Verifique a versão instalada do npm
+RUN npm --version
+
 # Defina a variável de ambiente para compatibilidade com OpenSSL
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
@@ -11,7 +17,7 @@ ENV NODE_OPTIONS=--openssl-legacy-provider
 COPY package*.json ./
 
 # Instale as dependências do projeto
-RUN npm install --force
+RUN npm install
 
 # Copie o restante do código da aplicação
 COPY . .
