@@ -1,0 +1,551 @@
+{
+	"info": {
+		"_postman_id": "d1466624-5c3f-43b0-91a8-dce9c592ff91",
+		"name": "quanum",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"Senh@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"Senh@123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/auth",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"auth"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"token\": \"xyzasdijaida\",\n        \"user\": {\n            \"id\": 225,\n            \"email\": \"johndoe@gmail.com\",\n            \"firstname\": \"John\",\n            \"lastname\": \"Doe\",\n            \"occupation_role\": \"Tester\",\n            \"type\": \"auditor\",\n            \"avatar_url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/2048px-User_font_awesome.svg.png\"\n        }\n    },\n    \"message\": \"O usuário foi logado com sucesso!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"johndoe@gmail.com\",\n    \"avatar_url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/2048px-User_font_awesome.svg.png\",\n    \"firstname\": \"Jonh\",\n    \"lastname\": \"Doe\",\n    \"occupation_role\": \"Tester\",\n    \"type\": \"auditor\",\n    \"password\": \"string\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Jonh\",\n    \"last_name\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"Senh@123\",\n    \"confirm_password\": \"Senh@123\",\n    \"role\": \"Auditor\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"token\": \"xyzasdijaida\",\n        \"user\": {\n            \"id\": 225,\n            \"email\": \"johndoe@gmail.com\",\n            \"firstname\": \"John\",\n            \"lastname\": \"Doe\",\n            \"occupation_role\": \"Tester\",\n            \"type\": \"manager\",\n            \"avatar_url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/2048px-User_font_awesome.svg.png\"\n        }\n    },\n    \"message\": \"O usuário foi registrado com sucesso!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer xyzasdijaida",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "token",
+									"type": "string"
+								},
+								{
+									"key": "type",
+									"value": "string",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Logout",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"Senh@123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/logout",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": null,\n    \"message\": \"O usuário foi deslogado com sucesso!\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer xyzasdijaida",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "token",
+									"type": "string"
+								},
+								{
+									"key": "type",
+									"value": "string",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Jonh\",\n    \"last_name\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"Senh@123\",\n    \"confirm_password\": \"Senh@123\",\n    \"role\": \"Auditor\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/{{userId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Jonh\",\n    \"last_name\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"Senh@123\",\n    \"confirm_password\": \"Senh@123\",\n    \"role\": \"Auditor\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/users/{{userId}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"{{userId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 225,\n        \"email\": \"johndoe@gmail.com\",\n        \"firstname\": \"John\",\n        \"lastname\": \"Doe\",\n        \"occupation_role\": \"Tester\",\n        \"type\": \"manager\",\n        \"avatar_url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/2048px-User_font_awesome.svg.png\"\n    },\n    \"message\": \"O usuário foi atualizado com sucesso!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/types",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"types"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Types",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Jonh\",\n    \"last_name\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"Senh@123\",\n    \"confirm_password\": \"Senh@123\",\n    \"role\": \"Auditor\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/users/types",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"types"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\"manager\", \"auditor\"],\n    \"message\": \"Os tipos de usuário foram listados com sucesso!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Jonh\",\n    \"last_name\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"Senh@123\",\n    \"confirm_password\": \"Senh@123\",\n    \"role\": \"Auditor\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 2,\n            \"email\": \"jean@email.com\",\n            \"firstname\": \"Jean\",\n            \"lastname\": \"Ferreira\",\n            \"occupation_role\": \"Dev\",\n            \"type\": \"manager\",\n            \"avatar_url\": \"github.com/jferreira1.png\"\n        },\n        {\n            \"id\": 7,\n            \"email\": \"igor@gmail.com\",\n            \"firstname\": \"Lisboa\",\n            \"lastname\": \"Igor\",\n            \"occupation_role\": \"IT Analyst\",\n            \"type\": \"auditor\",\n            \"avatar_url\": \"github.com/igor-lisboa.png\"\n        }\n    ],\n    \"message\": \"Os usuários foram listados com sucesso!\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Audits",
+			"item": [
+				{
+					"name": "Audits",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer xyzasdijaida",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "token",
+									"type": "string"
+								},
+								{
+									"key": "type",
+									"value": "string",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/audits",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"audits"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Audits",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/audits",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"audits"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"institution\": \"NiteroiMN\",\n            \"date\": \"2021-01-15\",\n            \"address\": \"Av. Gal. Milton Tavares de Souza, s/n - São Domingos, Niterói - RJ, 24210-310\",\n            \"score\": 1029,\n            \"score_max\": 1040,\n            \"score_critical_limit\": 750,\n            \"non_conformancies\": 4,\n            \"critical\": 1,\n            \"major\": 1,\n            \"minor\": 2\n        },\n        {\n            \"id\": 2,\n            \"institution\": \"NiteroiMN\",\n            \"date\": \"2021-07-25\",\n            \"address\": \"Av. Gal. Milton Tavares de Souza, s/n - São Domingos, Niterói - RJ, 24210-310\",\n            \"score\": 1036,\n            \"score_max\": 1040,\n            \"score_critical_limit\": 750,\n            \"non_conformancies\": 4,\n            \"critical\": 0,\n            \"major\": 0,\n            \"minor\": 2\n        },\n        {\n            \"id\": 3,\n            \"institution\": \"NiteroiMN\",\n            \"date\": \"2021-01-15\",\n            \"address\": \"Av. Gal. Milton Tavares de Souza, s/n - São Domingos, Niterói - RJ, 24210-310\",\n            \"score\": 714,\n            \"score_max\": 1040,\n            \"score_critical_limit\": 750,\n            \"non_conformancies\": 80,\n            \"critical\": 15,\n            \"major\": 20,\n            \"minor\": 45\n        }\n    ],\n    \"message\": \"As audits foram retornadas com sucesso!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/audits/types",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"audits",
+								"types"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Types",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Jonh\",\n    \"last_name\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"Senh@123\",\n    \"confirm_password\": \"Senh@123\",\n    \"role\": \"Auditor\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/audits/types",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"audits",
+										"types"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\"internal\", \"external\"],\n    \"message\": \"Os tipos de auditoria foram listados com sucesso!\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://a835165e-aa2f-421d-ac6d-10f9efa24966.mock.pstmn.io"
+		},
+		{
+			"key": "userId",
+			"value": "225"
+		}
+	]
+}
