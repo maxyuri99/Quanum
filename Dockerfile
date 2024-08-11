@@ -10,9 +10,6 @@ RUN npm install -g npm@8.19.4
 # Verifique a versão instalada do npm
 RUN npm --version
 
-# Defina a variável de ambiente para compatibilidade com OpenSSL
-ENV NODE_OPTIONS=--openssl-legacy-provider
-
 # Copie os arquivos de dependências
 COPY package*.json ./
 
