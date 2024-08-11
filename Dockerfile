@@ -4,9 +4,6 @@ FROM node:16-alpine
 # Defina o diretório de trabalho dentro do contêiner
 WORKDIR /app
 
-# Verifique se o arquivo main.js está presente após a cópia
-RUN ls -la /app/src
-
 # Instale a versão específica do npm (8.19.4)
 RUN npm install -g npm@8.19.4
 
@@ -22,14 +19,8 @@ RUN npm install --legacy-peer-deps
 # Copie o restante do código da aplicação
 COPY . .
 
-# Verifique se o arquivo main.js está presente após a cópia
-RUN ls -la /app/src
-
 # Compile a aplicação (se for necessário para o Vue.js)
 RUN npm run build
-
-# Verifique se os arquivos foram gerados corretamente
-RUN ls -la /app/dist
 
 # Exponha a porta da aplicação
 EXPOSE 8080
