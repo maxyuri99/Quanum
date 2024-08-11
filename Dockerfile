@@ -4,10 +4,13 @@ FROM node:18-alpine
 # Defina o diretório de trabalho dentro do contêiner
 WORKDIR /app
 
+# Defina a variável de ambiente para compatibilidade com OpenSSL
+ENV NODE_OPTIONS=--openssl-legacy-provider
+
 # Copie os arquivos de dependências
 COPY package*.json ./
 
-# Instale as dependências do projeto com --legacy-peer-deps
+# Instale as dependências do projeto
 RUN npm install --legacy-peer-deps
 
 # Copie o restante do código da aplicação
