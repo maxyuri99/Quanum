@@ -16,7 +16,7 @@ RUN npm install --legacy-peer-deps
 # Copie o restante do código da aplicação
 COPY . .
 
-# Verifique se o arquivo main.js está presente
+# Verifique se o arquivo main.js está presente após a cópia
 RUN ls -la /app/src
 
 # Compile a aplicação (se for necessário para o Vue.js)
