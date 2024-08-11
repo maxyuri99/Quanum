@@ -4,6 +4,9 @@ FROM node:16-alpine
 # Defina o diretório de trabalho dentro do contêiner
 WORKDIR /app
 
+# Verifique se o arquivo main.js está presente após a cópia
+RUN ls -la /app/src
+
 # Instale a versão específica do npm (8.19.4)
 RUN npm install -g npm@8.19.4
 
