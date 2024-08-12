@@ -2,26 +2,23 @@ FROM node:16-alpine
 
 WORKDIR /app
 
-# Verifique o conteúdo inicial do diretório /app
-RUN ls -la /app
-
 RUN npm install -g npm@8.19.4
 
-RUN npm --version
-
-# Copie os arquivos de dependências
 COPY package*.json ./
 
+# Desabilite temporariamente o postinstall para evitar a execução automática do build
+RUN npm set-script postinstall ""
+
+# Instale as dependências
 RUN npm install --legacy-peer-deps
+
+# Reative o script postinstall
+RUN npm set-script postinstall "npm run build"
 
 # Copie o restante do código da aplicação
 COPY . .
 
-# Verifique se os arquivos foram copiados corretamente
-RUN ls -la /app
-RUN ls -la /app/src
-
-# Compile a aplicação (use "build" ao invés de "start" para compilar)
+# Execute o build manualmente
 RUN npm run build
 
 EXPOSE 8080
