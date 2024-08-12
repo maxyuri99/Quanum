@@ -18,7 +18,7 @@ RUN npm set-script postinstall "npm run build"
 COPY . .
 
 # Adicione novamente o @popperjs/core se necessário
-RUN npm install @popperjs/core --save
+RUN npm install @popperjs/core --legacy-peer-deps --save
 
 # Execute o build manualmente
 RUN npm run build
