@@ -19,6 +19,6 @@ RUN npm install apexcharts --legacy-peer-deps --save
 
 RUN npm run build
 
-EXPOSE 8080
+EXPOSE 80
 
 CMD ["npm", "run", "serve"]
