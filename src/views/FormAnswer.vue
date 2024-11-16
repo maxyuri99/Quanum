@@ -20,18 +20,20 @@
       </div>
     </div>
     <form @submit.prevent="submitForm" v-else>
-      <div v-for="(topic, tIndex) in formData.topics" :key="topic.id">
+      <div v-for="(topic) in formData.topics" :key="topic.id">
         <div class="row mt-5 justify-content-start">
           <div class="col-12">
             <h1 class="h2">
               {{ getLanguage() == "pt-br" ? topic.portuguese : topic.english }}
+              
             </h1>
           </div>
         </div>
+        
 
         <div
           class="justify-content-start mt-5"
-          v-for="(question, qIndex) in topic.questions"
+          v-for="(question) in topic.questions"
           :key="question.id"
         >
           <b-row class="fw-bold text-uppercase">
@@ -58,7 +60,7 @@
               <select
                 class="form-select h-100"
                 v-model="
-                  formAnswers[getAnswerIndex(tIndex, qIndex)].conformance_lvl
+                  formAnswers[getAnswerIndex(question, formAnswers)].conformance_lvl
                 "
                 required
               >
@@ -96,9 +98,10 @@
               }}:
               <textarea
                 class="h-100"
-                v-model="formAnswers[getAnswerIndex(tIndex, qIndex)].comment"
+                v-model="formAnswers[getAnswerIndex(question, formAnswers)].comment"
                 :placeholder="$t('commentFieldPlaceholder')"
-              ></textarea>
+              >
+            </textarea>
             </b-col>
             <b-col offset-sm="1" class="d-flex flex-md-column my-2">
               <p class="fw-bold text-uppercase">
@@ -129,7 +132,7 @@
                 class="col-md-5"
                 :placeholder="$t('evidenceFieldPlaceholder')"
                 v-model.trim="
-                  formAnswers[getAnswerIndex(tIndex, qIndex)].evidences
+                  formAnswers[getAnswerIndex(question, formAnswers)].evidences
                 "
               />
             </b-row>
@@ -187,15 +190,8 @@ export default {
       this.loading = false;
     },
 
-    getAnswerIndex(tIndex, qIndex) {
-      if (tIndex === 0) return qIndex;
-      let count = tIndex;
-      let aux = 0;
-      while (count > 0) {
-        aux += this.formData.topics[count - 1].questions.length;
-        count--;
-      }
-      return aux + qIndex;
+    getAnswerIndex(question, form) {
+      return form.findIndex(item => item.question_id === question.id);
     },
 
     async initAnswers(topics) {
@@ -205,6 +201,8 @@ export default {
       apiAudit.getAnswers(auditId, formId).then((response) => {
         if (response.data.data.length !== 0) {
           this.formAnswers = response.data.data;
+          
+
           this.loading = false;
         } else {
           for (let topic of topics) {
